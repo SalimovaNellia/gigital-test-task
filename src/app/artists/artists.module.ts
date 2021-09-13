@@ -1,7 +1,11 @@
-import { ArtistsComponent } from './artists/artists.component';
+import { ArtistsComponent } from './artists.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ArtistsListItemComponent } from './components /artists-list-item/artists-list-item.component';
+import {MatCardModule} from "@angular/material/card";
+import {ArtistsApiService} from "../shared/services/artists-api.service";
+import {HttpClient} from "@angular/common/http";
 
 const routes: Routes = [
   {
@@ -12,11 +16,16 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ArtistsComponent
+    ArtistsComponent,
+    ArtistsListItemComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    MatCardModule,
+  ],
+  providers: [
+    ArtistsApiService
   ]
 })
 export class ArtistsModule { }
