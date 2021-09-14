@@ -1,1 +1,8 @@
-<app-artists-list-item></app-artists-list-item>
+<div class="wrapper">
+  <div class="list-container">
+    <ng-container *ngFor="let artist of artists | async">
+      <app-artists-list-item [artist]="artist"></app-artists-list-item>
+    </ng-container>
+  </div>
+</div>
+

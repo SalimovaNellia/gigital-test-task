@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { ArtistsListItemComponent } from './components /artists-list-item/artists-list-item.component';
 import {MatCardModule} from "@angular/material/card";
 import {ArtistsApiService} from "../shared/services/artists-api.service";
-import {HttpClient} from "@angular/common/http";
+import {MatSelectModule} from "@angular/material/select";
 
 const routes: Routes = [
   {
@@ -19,11 +19,12 @@ const routes: Routes = [
     ArtistsComponent,
     ArtistsListItemComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatCardModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatCardModule,
+        MatSelectModule,
+    ],
   providers: [
     ArtistsApiService
   ]

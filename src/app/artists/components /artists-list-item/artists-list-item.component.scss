@@ -1,0 +1,25 @@
+mat-card {
+  border-radius: 8px;
+
+  .artist-img {
+    border-radius: 8px;
+  }
+
+  .price {
+    margin: 16px;
+    font-size: 20px;
+    color: #000;
+  }
+
+  .tags-list {
+    list-style: none;
+    padding: 0 16px 20px;
+
+     li {
+       display: inline-block;
+       margin-right: 10px;
+      color: #18B65E
+     }
+  }
+}
+

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { ArtistInterface } from 'src/app/shared/types/artist.interface';
 
 @Component({
   selector: 'app-artists-list-item',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artists-list-item.component.scss']
 })
 export class ArtistsListItemComponent implements OnInit {
+  @Input() artist: ArtistInterface;
 
   constructor() { }
 

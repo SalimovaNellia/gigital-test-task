@@ -1,8 +1,14 @@
-<mat-card>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+<mat-card *ngIf="artist">
+  <img class="artist-img" mat-card-image [src]=artist.picture [alt]=artist.name>
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-card-title>{{ artist.name }}</mat-card-title>
   </mat-card-header>
+  <mat-card-content>
+    <ul class="tags-list" *ngIf="artist.tags.length">
+      <li *ngFor="let tag of artist.tags">
+        <a href=""> #{{ tag.name }}</a>
+      </li>
+    </ul>
+    <p class="price">{{ artist.price | currency }}</p>
+  </mat-card-content>
 </mat-card>
