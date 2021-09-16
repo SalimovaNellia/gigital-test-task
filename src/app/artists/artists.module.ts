@@ -1,12 +1,13 @@
+import { MatSelectModule } from '@angular/material/select';
 import { ArtistsComponent } from './artists.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ArtistsListItemComponent } from './components /artists-list-item/artists-list-item.component';
-import {MatCardModule} from "@angular/material/card";
-import {ArtistsApiService} from "../shared/services/artists-api.service";
-import {MatSelectModule} from "@angular/material/select";
-import {SharedModule} from "../shared/shared.module";
+
+import { ArtistsListItemComponent } from 'src/app/artists/components/artists-list-item/artists-list-item.component';
+import { ArtistsApiService } from 'src/app/shared/services/artists-api.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {
