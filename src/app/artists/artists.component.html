@@ -1,10 +1,19 @@
 <div class="wrapper">
-  <app-sort-selector (sortOptionSelected)="selectedSortOption$.next($event)"></app-sort-selector>
+  <div class="d__flex">
+    <mat-card class="w__25per m-r__35">
+      <app-data-filter [filteringTags]="filteringTags"
+                       (filteringTagsSelected$)="onFiltersSelected($event)"></app-data-filter>
+    </mat-card>
 
-  <div class="list-container">
-    <ng-container *ngFor="let artist of artists$ | async">
-      <app-artists-list-item [artist]="artist"></app-artists-list-item>
-    </ng-container>
+    <div class="w__75per artists-wrapper">
+      <app-sort-selector (sortOptionSelected)="selectedSortOption$.next($event)"></app-sort-selector>
+
+      <div class="list-container">
+        <ng-container *ngFor="let artist of artists$ | async">
+          <app-artists-list-item [artist]="artist"></app-artists-list-item>
+        </ng-container>
+      </div>
+    </div>
   </div>
 </div>
 

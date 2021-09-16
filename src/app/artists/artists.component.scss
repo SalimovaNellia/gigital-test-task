@@ -5,7 +5,6 @@
 .list-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: stretch;
   margin-right: -35px;
 
@@ -15,6 +14,10 @@
     margin-right: 35px;
     margin-bottom: 35px;
   }
+}
+
+.artists-wrapper {
+  margin-bottom: -35px;
 }
 
 app-sort-selector {

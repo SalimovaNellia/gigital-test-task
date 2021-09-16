@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <h1>Filter</h1>
+  <h3>Tags</h3>
+
+  <ul class="m-b__50 ">
+    <li *ngFor="let filteringTag of filteringTags">
+
+      <mat-checkbox [checked]="isFilterChecked(filteringTag.id)"
+                    (change)="changeFiltering($event.checked, filteringTag.id)"
+                    color="primary">
+        {{ filteringTag.name }}
+      </mat-checkbox>
+
+    </li>
+  </ul>
+  <button mat-raised-button color="primary" (click)="clearAllFilters()">Clear All</button>
+</div>

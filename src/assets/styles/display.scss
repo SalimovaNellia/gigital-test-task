@@ -1,0 +1,47 @@
+.d {
+  &__block {
+    display: block;
+  }
+
+  &__flex {
+    display: flex;
+  }
+}
+
+.w {
+  &__100per {
+    width: 100%;
+  }
+
+  &__75per {
+    width: 75%;
+  }
+
+  &__50per {
+    width: 50%;
+  }
+
+  &__25per {
+    width: 25%;
+  }
+}
+
+.f {
+  &__grow-1 {
+    flex-grow: 1;
+  }
+}
+
+.m {
+  &-r {
+    &__35 {
+      margin-right: 35px;
+    }
+  }
+
+  &-b {
+    &__50 {
+      margin-bottom: 50px;
+    }
+  }
+}
