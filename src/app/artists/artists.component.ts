@@ -1,7 +1,9 @@
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 import { ArtistsApiService } from 'src/app/shared/services/artists-api.service';
+import { SortArtistByEnum } from 'src/app/shared/enums/SortArtistByEnum';
 import { ArtistInterface } from 'src/app/shared/types/artist.interface';
 
 @Component({
@@ -11,15 +13,43 @@ import { ArtistInterface } from 'src/app/shared/types/artist.interface';
 })
 export class ArtistsComponent implements OnInit {
 
-  public artists: Observable<ArtistInterface[]> = this.artistsService.getArtistsList();
-  public sortByOptions: string[] = ['Lowest Price', 'Highest Price']
+  public selectedSortOption$: BehaviorSubject<number>;
+  public artists$: Observable<ArtistInterface[]>;
 
   constructor(private artistsService: ArtistsApiService) { }
 
   public ngOnInit(): void {
-    this.artistsService.getArtistsList().subscribe(
-      (res) => console.log(res)
-    )
+    this.initValues();
   }
 
+  public initValues(): void {
+    this.selectedSortOption$ = new BehaviorSubject<number>(2);
+
+    this.artists$ = combineLatest([
+      this.selectedSortOption$
+    ]).pipe(
+      switchMap(([sortOption]: [number]) => {
+        const dataSubscription$ = this.artistsService.getArtistsList();
+
+        switch (sortOption) {
+
+          case SortArtistByEnum.LOWEST_PRICE: {
+            return dataSubscription$.pipe(
+              map((artists: ArtistInterface[]) => artists.sort(
+                (low: ArtistInterface, high: ArtistInterface) => low.price - high.price)),
+            )
+          }
+
+          case SortArtistByEnum.HIGHEST_PRICE: {
+            return dataSubscription$.pipe(
+              map((artists: ArtistInterface[]) => artists.sort(
+                (low: ArtistInterface, high: ArtistInterface) => high.price - low.price)),
+            )
+          }
+
+          default: return dataSubscription$;
+        }
+      })
+    )
+  }
 }

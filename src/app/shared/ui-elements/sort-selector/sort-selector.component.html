@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+
+  <mat-form-field appearance="outline">
+    <mat-select placeholder="Sort By"
+                formControlName="sortBy"
+                (selectionChange)="selectFilter($event.value)">
+      <mat-option [value]="SORT_BY_OPTIONS.ALL">
+        All
+      </mat-option>
+
+      <mat-option [value]="SORT_BY_OPTIONS.HIGHEST_PRICE">
+        Highest Price
+      </mat-option>
+
+      <mat-option [value]="SORT_BY_OPTIONS.LOWEST_PRICE">
+        Lowest Price
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+</form>
+

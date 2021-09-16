@@ -1,6 +1,8 @@
 <div class="wrapper">
+  <app-sort-selector (sortOptionSelected)="selectedSortOption$.next($event)"></app-sort-selector>
+
   <div class="list-container">
-    <ng-container *ngFor="let artist of artists | async">
+    <ng-container *ngFor="let artist of artists$ | async">
       <app-artists-list-item [artist]="artist"></app-artists-list-item>
     </ng-container>
   </div>
